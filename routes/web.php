@@ -5,10 +5,23 @@ use App\Models\User;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SejarahController;
+use App\Http\Controllers\AdvisorsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PartnershipController;
+use App\Http\Controllers\DivisiMemberController;
+use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\DashboardNewsController;
+use App\Http\Controllers\KategoriEventController;
+use App\Http\Controllers\StrkOrganisasiController;
+use App\Http\Controllers\WelcomeMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +95,19 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::get('/dashboard/news/checkSlug', [DashboardNewsController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/news', DashboardNewsController::class)->middleware('auth');
+
+Route::resource('/dashboard/kategoris', AdminKategoriController::class)->except('show')->middleware('admin');
+
+Route::get('/dashboard/kategoris/checkSlug', [AdminKategoriController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/divisi', DivisiController::class)->except('show');
+Route::resource('/dashboard/sejarah', SejarahController::class)->except('show');
+Route::resource('/dashboard/about', AboutController::class)->except('show');
+Route::resource('/dashboard/visimisi', VisiMisiController::class)->except('show');
+Route::resource('/dashboard/contact', ContactController::class)->except('show');
+Route::resource('/dashboard/kategorievent', KategoriEventController::class)->except('show');
+Route::resource('/dashboard/welcomemessage', WelcomeMessageController::class)->except('show');
+Route::resource('/dashboard/strkorganisasi', StrkOrganisasiController::class)->except('show');
+Route::resource('/dashboard/partnership', PartnershipController::class)->except('show');
+Route::resource('/dashboard/advisors', AdvisorsController::class)->except('show');
+Route::resource('/dashboard/divisimember', DivisiMemberController::class)->except('show');
+Route::resource('/dashboard/event', EventController::class)->except('show');

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Divisi;
 use App\Models\News;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -16,14 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(3)->create();
-        News::factory(20)->create();
-        User::create([
-            'username' => 'dini',
-            'nama_lengkap' => 'Nurandini. P',
-            'email' => 'dini@gmail.com',
-            'password' => bcrypt('11111'),
-        ]);
+        // User::factory(3)->create();
+        // News::factory(20)->create();
+        // User::create([
+        //     'username' => 'dini',
+        //     'nama_lengkap' => 'Nurandini. P',
+        //     'email' => 'dini@gmail.com',
+        //     'password' => bcrypt('11111'),
+        // ]);
         // User::create([
         //     'username' => 'pera',
         //     'nama_lengkap' => 'Pera Anggraini',
@@ -31,18 +32,23 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('11111'),
         // ]);
 
-        Kategori::create([
-            'kategori_news' => 'Tambang',
-            'slug' => 'tambang'
+        // Kategori::create([
+        //     'kategori_news' => 'Tambang',
+        //     'slug' => 'tambang'
+        // ]);
+        // Kategori::create([
+        //     'kategori_news' => 'Emas',
+        //     'slug' => 'emas'
+        // ]);
+        // Kategori::create([
+        //     'kategori_news' => 'Batu',
+        //     'slug' => 'batu'
+        // ]);
+        Divisi::create([
+            'nama_divisi' => 'Humas',
+            'deskripsi' => 'Hubungan Masyarakat'
         ]);
-        Kategori::create([
-            'kategori_news' => 'Emas',
-            'slug' => 'emas'
-        ]);
-        Kategori::create([
-            'kategori_news' => 'Batu',
-            'slug' => 'batu'
-        ]);
+
 
         // News::create([
         //     'title' => 'Judul Pertama',

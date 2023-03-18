@@ -103,15 +103,23 @@ class DashboardNewsController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'kategori_id' => 'required',
-            // 'image' => 'image|file|max:1024',
+            'image' => 'image|file|max:1024',
             'isi_news' => 'required'
         ];
+
 
         if ($request->slug != $news->slug) {
             $rules['slug'] = 'required|unique:news';
         }
 
         $validatedData = $request->validate($rules);
+
+        if ($request->file('gambar')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['gambar'] = $request->file('gambar')->store('post-images');
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['kutipan'] = Str::limit(strip_tags($request->isi_news), 100);
@@ -129,9 +137,9 @@ class DashboardNewsController extends Controller
      */
     public function destroy(News $news)
     {
-        // if ($news->image) {
-        //     Storage::delete($news->image);
-        // }
+        if ($news->gambar) {
+            Storage::delete($news->gambar);
+        }
         News::destroy($news->id);
         return redirect('/dashboard/news')->with('success', 'Berita dihapus');
     }

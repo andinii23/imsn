@@ -40,21 +40,21 @@
                 @endforeach 
             </select>
         </div>
-        {{-- <div class="mb-3">
-            <label for="image" class="form-label">news Image</label>
-            <input type="hidden" name="oldImage" value="{{ $news->image }}">
-            @if($news->image)
-            <img src="{{ asset('storage/'.$news->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+        <div class="mb-3">
+            <label for="gambar" class="form-label">news Image</label>
+            <input type="hidden" name="oldImage" value="{{ $news->gambar }}">
+            @if($news->gambar)
+            <img src="{{ asset('storage/'.$news->gambar) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
             @else
             <img src="" class="img-preview img-fluid mb-3 col-sm-5">
             @endif
-            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()">
-            @error('image')
+            <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="previewImage()">
+            @error('gambar')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
             @enderror
-        </div> --}}
+        </div>
         <div class="mb-3">
             <label for="isi_news" class="form-label">isi_news</label>
             @error('isi_news')
@@ -82,7 +82,7 @@
     })
 
     function previewImage(){
-    const image = document.querySelector('#image');
+    const image = document.querySelector('#gambar');
     const imgPreview = document.querySelector('.img-preview');
 
     imgPreview.style.display = 'block';
